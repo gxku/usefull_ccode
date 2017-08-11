@@ -14,14 +14,9 @@ struct list_head {
         struct list_head *next, *prev;
 };
  
-/* XXX workaround for conflicts. The list API should use its own
- * namespace prefix, i.e. BLK_
- */
-
-#define LIST_HEAD_INIT(name) { &(name), &(name) }
  
 #define LIST_HEAD(name) \
-        struct list_head name = LIST_HEAD_INIT(name)
+        struct list_head name = { &(name), &(name) } 
 
 static inline void INIT_LIST_HEAD(struct list_head *list)
 {
@@ -62,11 +57,6 @@ static inline void list_del(struct list_head *entry)
         entry->prev = LIST_POISON2;
 }
 
-static inline void list_del_init(struct list_head *entry)
-{
-	__list_del(entry->prev, entry->next);
-	INIT_LIST_HEAD(entry);
-}
 
 static inline int list_empty(const struct list_head *head)
 {
