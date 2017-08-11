@@ -127,7 +127,6 @@ int open_port(char *dev)
     printf("fd-open=%d\n",fd);
     return fd;
 }
-/*
 int main(int argc, char *argv[])
 {
     int fd;
@@ -153,4 +152,3 @@ int main(int argc, char *argv[])
     return;
 }
 
-*/
