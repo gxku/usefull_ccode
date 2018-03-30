@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
                    // handle_received_message(&msg);
                 }
             }
-        sleep(1);
+        usleep(100);
     }
 
     close(fd);

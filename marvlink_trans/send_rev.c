@@ -19,7 +19,7 @@ void send_blk_data(int fd,int type,char *buff,int buf_len)
     header[MSG_LEN] = buf_len;
     int i;
     for(i=0;i<buf_len;i++){
-        sum = sum + buff[i];
+        sum = sum + (unsigned char)buff[i];
     }
     header[MSG_SUM] = sum;
 
